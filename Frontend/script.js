@@ -45,7 +45,9 @@ async function main() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    let cells = [3, 3]
+    let cells = [[false, false, false],
+                 [false, false, false],
+                 [false, false, false],]
     const canvases = document.querySelectorAll('canvas');
     canvases.forEach(canvas => {
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
