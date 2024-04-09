@@ -1,3 +1,3 @@
 import aitactoe as aitt
 
-aitt.train()
+#aitt.train()

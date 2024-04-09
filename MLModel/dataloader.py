@@ -34,7 +34,7 @@ def _load_data_set(path):
     return x, y, n
 
 def get_class_by_name(name):
-    if "0" in name:
+    if "o" in name:
         return 0
     if "x" in name:
         return 1

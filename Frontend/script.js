@@ -23,7 +23,7 @@ class Cell
 let model
 
 async function loadModel() {
-    model = await tf.loadLayersModel('MLTicTacToe/tictactoe.keras');
+    model = await tf.loadLayersModel('MLTicTacToe/tictactoe.js');
     console.log("model has been loaded");
     return model;
 }
@@ -45,9 +45,7 @@ async function main() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    let cells = [[false, false, false],
-                 [false, false, false],
-                 [false, false, false],]
+    let cells = [3, 3]
     const canvases = document.querySelectorAll('canvas');
     canvases.forEach(canvas => {
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
