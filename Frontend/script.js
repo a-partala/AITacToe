@@ -23,7 +23,7 @@ class Cell
 let model
 
 async function loadModel() {
-    model = await tf.loadLayersModel('MLTicTacToe/tictactoe.js');
+    model = await tf.loadLayersModel('../MLModel/model/tictactoe.json');
     console.log("model has been loaded");
     return model;
 }
