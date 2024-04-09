@@ -44,7 +44,8 @@ async function main() {
     assignCells();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await main();
     let cells = [[false, false, false],
                  [false, false, false],
                  [false, false, false],]
