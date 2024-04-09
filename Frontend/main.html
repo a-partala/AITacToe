@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Grid</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="canvas-container">
+        <table>
+            <tr>
+                <td><canvas id="canvas1" width="60" height="60"></canvas></td>
+                <td><canvas id="canvas2" width="60" height="60"></canvas></td>
+                <td><canvas id="canvas3" width="60" height="60"></canvas></td>
+            </tr>
+            <tr>
+                <td><canvas id="canvas4" width="60" height="60"></canvas></td>
+                <td><canvas id="canvas5" width="60" height="60"></canvas></td>
+                <td><canvas id="canvas6" width="60" height="60"></canvas></td>
+            </tr>
+            <tr>
+                <td><canvas id="canvas7" width="60" height="60"></canvas></td>
+                <td><canvas id="canvas8" width="60" height="60"></canvas></td>
+                <td><canvas id="canvas9" width="60" height="60"></canvas></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: center;">
+                    <button id="saveBtn">next move</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<!--
+    
+    document.getElementById('saveBtn').addEventListener('click', function() {
+        // Сохранение в файл
+        const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        window.location.href = image;
+
+        // Получение массива пикселей (для дальнейшей работы с массивом)
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixelsArray = imgData.data;
+        console.log(pixelsArray);
+    });
+-->

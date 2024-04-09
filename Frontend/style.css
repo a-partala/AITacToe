@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#saveBtn {
+    align-content: center;
+}
+
+.canvas-container {
+    border: 1px solid #000;
+    padding-top: 2px;
+    align-items: middle;
+}
+
+canvas {
+    border: 1px solid #ddd;
+    margin: -3px -1px;
+    image-rendering: pixelated;
+}
