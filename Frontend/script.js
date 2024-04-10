@@ -29,7 +29,7 @@ async function loadModel() {
 }
   
 async function predict(model, grayscaleArray) {
-    const tensor = tf.tensor2d(grayscaleArray, [canvas.width * canvas.height, 1]);
+    const tensor = tf.tensor2d([grayscaleArray], [1, grayscaleArray.length]);
   
     const prediction = model.predict(tensor);
   
