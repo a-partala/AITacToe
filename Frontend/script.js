@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(grayscaleArray);
         const prediction = model.predict(tensor);
         
-        const symbol = prediction.dataSync()[0] >= 0.5 ? 1 : 0;
+        const symbol = prediction >= 0.5 ? 1 : 0;
         console.log(`symbol: ${symbol}`);
         cell.symbol = symbol;
     }
