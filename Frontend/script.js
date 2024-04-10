@@ -114,7 +114,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function setSymbol(cell) {
-        const imageData = cell.ctx.getImageData(0, 0, cell.canvas.width, cell.canvas.height);
+        let ctx = cell.canvas.getContext('2d');
+        const imageData = ctx.getImageData(0, 0, cell.canvas.width, cell.canvas.height);
     
         const grayscaleArray = [];
     
@@ -122,9 +123,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const r = imageData.data[i];
             const g = imageData.data[i + 1];
             const b = imageData.data[i + 2];
-            const a = imageData.data[i + 3];
-            console.log(`${r}, ${g}, ${b}, ${a}`)
-            const gray = (0.299 * r + 0.587 * g + 0.114 * b) / 255.0;
+            console.log(imageData.data[i + 3])
+            const gray = imageData.data[i + 3] / 255.0;
     
             grayscaleArray.push(gray);
         }
