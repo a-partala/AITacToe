@@ -23,7 +23,7 @@ class Cell
 let model
 
 async function loadModel() {
-    model = await tf.loadLayersModel('model/model.json');
+    model = await tf.loadGraphModel('model/model.json', { weightPathPrefix: 'model/group1-shard1of1.bin' });
     console.log("model has been loaded");
     return model;
 }
