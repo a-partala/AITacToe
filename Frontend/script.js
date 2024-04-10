@@ -23,7 +23,7 @@ class Cell
 let model
 
 async function loadModel() {
-    model = await tf.loadGraphModel('model/model.json');
+    model = await tf.loadLayersModel('model/model.json');
     console.log("model has been loaded");
     return model;
 }
@@ -32,6 +32,7 @@ async function predict(model, grayscaleArray) {
     const tensor = tf.tensor2d([grayscaleArray], [1, grayscaleArray.length]);
   
     const prediction = model.predict(tensor);
+  
     prediction.print();
   
     const pIndex = tf.argMax(prediction, 1).dataSync();
@@ -123,13 +124,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             const g = imageData.data[i + 1];
             const b = imageData.data[i + 2];
             
-            const gray = (0.299 * r + 0.587 * g + 0.114 * b) / 255.0;
+            const gray = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
     
             grayscaleArray.push(gray);
         }
-        console.log(grayscaleArray);
         const tensor = tf.tensor2d([grayscaleArray], [1, grayscaleArray.length]);
-    
+        console.log(grayscaleArray);
         const prediction = model.predict(tensor);
         
         const symbol = prediction.dataSync()[0] >= 0.5 ? 1 : 0;
