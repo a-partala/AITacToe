@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
             grayscaleArray.push(gray);
         }
-        const tensor = tf.tensor4d(grayscaleArray, [1, cell.canvas.height, cell.canvas.width, 1]);
+        const tensor = tf.tensor2d([grayscaleArray], [1, grayscaleArray.length]);
     
         const prediction = model.predict(tensor);
         
