@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const r = imageData.data[i];
             const g = imageData.data[i + 1];
             const b = imageData.data[i + 2];
-            
-            const gray = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+            console.log(r)
+            const gray = (0.299 * r + 0.587 * g + 0.114 * b) / 255.0;
     
             grayscaleArray.push(gray);
         }
