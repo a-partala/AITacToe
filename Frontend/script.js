@@ -5,11 +5,11 @@ class Cell
         this.canvas = canvas;
         this.isFinished = false;
         this.symbol = -1;
-        this.ctx = this.canvas.getContext('2d');
     }
 
     hasPixels() {
-        const imgData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+        const ctx = this.canvas.getContext('2d');
+        const imgData = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
         const pixelsArray = imgData.data;
         for (let i = 0; i < pixelsArray.length; i += 4) {
             if (pixelsArray[i+3] > 0) {
@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const r = imageData.data[i];
             const g = imageData.data[i + 1];
             const b = imageData.data[i + 2];
-            console.log(r)
+            const a = imageData.data[i + 3];
+            console.log(`${r}, ${g}, ${b}, ${a}`)
             const gray = (0.299 * r + 0.587 * g + 0.114 * b) / 255.0;
     
             grayscaleArray.push(gray);
