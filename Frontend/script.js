@@ -120,11 +120,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const grayscaleArray = [];
     
         for (let i = 0; i < imageData.data.length; i += 4) {
-            const r = imageData.data[i];
-            const g = imageData.data[i + 1];
-            const b = imageData.data[i + 2];
-            console.log(imageData.data[i + 3])
-            const gray = imageData.data[i + 3] / 255.0;
+            a = imageData.data[i + 3];
+            console.log(a)
+            const gray = a / 255.0;
     
             grayscaleArray.push(gray);
         }
