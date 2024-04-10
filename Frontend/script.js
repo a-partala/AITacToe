@@ -121,13 +121,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     
         for (let i = 0; i < imageData.data.length; i += 4) {
             a = imageData.data[i + 3];
-            console.log(a)
+            //console.log(a)
             const gray = a / 255.0;
     
             grayscaleArray.push(gray);
         }
         const tensor = tf.tensor2d([grayscaleArray], [1, grayscaleArray.length]);
-        console.log(grayscaleArray);
+        //console.log(grayscaleArray);
         const prediction = model.predict(tensor);
         
         const symbol = prediction >= 0.5 ? 1 : 0;
