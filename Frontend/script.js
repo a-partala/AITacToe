@@ -41,11 +41,11 @@ async function predict(model, grayscaleArray) {
 
 async function main() {
     await loadModel();
-    assignCells();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
     await main();
+    assignCells();
     let cells = [[false, false, false],
                  [false, false, false],
                  [false, false, false],]
