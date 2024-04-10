@@ -113,33 +113,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    function setSymbol(cell)
-    {
+    function setSymbol(cell) {
         let ctx = cell.canvas.getContext('2d');
         const imageData = ctx.getImageData(0, 0, cell.canvas.width, cell.canvas.height);
-
+    
         const grayscaleArray = [];
-
-        for (let i = 0; i < imageData.data.length; i += 4) 
-        {
+    
+        for (let i = 0; i < imageData.data.length; i += 4) {
             const r = imageData.data[i];
             const g = imageData.data[i + 1];
             const b = imageData.data[i + 2];
             
             const gray = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-
+    
             grayscaleArray.push(gray);
         }
-        const tensor = tf.tensor4d(grayscaleArray, [1, cell.canvas.width, cell.canvas.height, 1]);
-
+        const tensor = tf.tensor4d(grayscaleArray, [1, cell.canvas.height, cell.canvas.width, 1]);
+    
         const prediction = model.predict(tensor);
-        model.predict(grayscaleArray);
-        cell.symbol = 0;
-        if(prediction >= 0.5)
-        {
-            cell.symbol = 1;
-        }
-        console.log(`symbol: ${cell.symbol}`);
+        
+        const symbol = prediction.dataSync()[0] >= 0.5 ? 1 : 0;
+        console.log(`symbol: ${symbol}`);
+        cell.symbol = symbol;
     }
 
     function checkWin() 
