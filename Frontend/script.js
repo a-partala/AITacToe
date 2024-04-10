@@ -5,10 +5,10 @@ class Cell
         this.canvas = canvas;
         this.isFinished = false;
         this.symbol = -1;
+        this.ctx = this.canvas.getContext('2d');
     }
 
     hasPixels() {
-        const ctx = this.canvas.getContext('2d');
         const imgData = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
         const pixelsArray = imgData.data;
         for (let i = 0; i < pixelsArray.length; i += 4) {
@@ -114,8 +114,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function setSymbol(cell) {
-        let ctx = cell.canvas.getContext('2d');
-        const imageData = ctx.getImageData(0, 0, cell.canvas.width, cell.canvas.height);
+        const imageData = cell.ctx.getImageData(0, 0, cell.canvas.width, cell.canvas.height);
     
         const grayscaleArray = [];
     
