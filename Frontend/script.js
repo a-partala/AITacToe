@@ -45,10 +45,10 @@ async function main() {
 
 document.addEventListener('DOMContentLoaded', async () => {
     await main();
-    assignCells();
     let cells = [[false, false, false],
                  [false, false, false],
                  [false, false, false],]
+    assignCells();
     const canvases = document.querySelectorAll('canvas');
     canvases.forEach(canvas => {
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
