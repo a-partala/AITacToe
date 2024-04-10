@@ -1,9 +1,10 @@
 import tensorflow as tf
+import tensorflowjs as tfjs
 from tensorflow.keras.layers import Dense
 import numpy as np
 import dataloader as dl
 from sklearn.model_selection import train_test_split
-
+TF_ENABLE_ONEDNN_OPTS=0
 
 def get_cost(model, x_data, y_data):
     y_hat_raw = model.predict(x_data)
@@ -34,10 +35,10 @@ model = tf.keras.models.Sequential([
     tf.keras.Input(shape=(3600,)),
     Dense(units=30, activation="relu", kernel_regularizer=tf.keras.regularizers.l2(0.002)),
     Dense(units=20, activation="relu", kernel_regularizer=tf.keras.regularizers.l2(0.002)),
-    Dense(units=1, activation="linear"),
+    Dense(units=1, activation="sigmoid"),
 ])
 model.compile(
-    loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
+    loss=tf.keras.losses.BinaryCrossentropy(),
     optimizer=tf.keras.optimizers.Adam(learning_rate=0.003)
 )
 model.fit(x_train, y_train, epochs=50)
@@ -48,6 +49,6 @@ cost_test = get_cost(model, x_test, y_test)
 print(f"Cross validation cost: {cost_dev}")
 print(f"Test cost: {cost_test}")
 
-model.save("model/tictactoe.json")
-
+#model.save("model/tictactoe.h5")
+tfjs.converters.save_keras_model(model, 'model')
 

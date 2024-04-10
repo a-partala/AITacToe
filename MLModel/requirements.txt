@@ -1,5 +1,5 @@
-tensorflow==2.15.0
 tensorflowjs
+tensorflow==2.15.0
 numpy
 pillow
 scikit-learn
