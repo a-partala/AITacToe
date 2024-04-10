@@ -9,7 +9,7 @@ class Cell
     }
 
     hasPixels() {
-        const imgData = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+        const imgData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
         const pixelsArray = imgData.data;
         for (let i = 0; i < pixelsArray.length; i += 4) {
             if (pixelsArray[i+3] > 0) {
