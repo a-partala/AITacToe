@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     await main();
     let cells = [[false, false, false],
                  [false, false, false],
-                 [false, false, false],]
+                 [false, false, false],];
+    let symbol = -1;
     //assignCells();
     const canvases = document.querySelectorAll('canvas');
     canvases.forEach(canvas => {
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateCells();
         if(checkWin())
         {
-            console.log("victory LOL");
+            alert(`${symbol == 1 ? "X" : "O"} won!`)
         }
     });
 
@@ -121,24 +122,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     
         for (let i = 0; i < imageData.data.length; i += 4) {
             a = imageData.data[i + 3];
-            //console.log(a)
             const gray = a / 255.0;
     
             grayscaleArray.push(gray);
         }
         const tensor = tf.tensor2d([grayscaleArray], [1, grayscaleArray.length]);
-        //console.log(grayscaleArray);
         const prediction = model.predict(tensor);
         
-        const symbol = prediction >= 0.5 ? 1 : 0;
-        console.log(`symbol: ${symbol}`);
+        const symbol = prediction.dataSync()[0] < 0.5 ? 1 : 0;
+        console.log(`symbol: ${symbol == 1 ? "X" : "O"}`);
         cell.symbol = symbol;
     }
 
     function checkWin() 
     {
         let counter = 0
-        let symbol = -1
+        symbol = -1
         for(let i = 0; i < 3; i++)
         {
             counter = 0;
